@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('pull'){
+            steps {
+               git branch: 'main', url: 'https://github.com/Parikshitt281/frontend12.git'
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh 'aws s3 cp --recursive dist/frontend1/ s3://frontend-devll/'
+                
+            }
+
+        }
+    }
+}
